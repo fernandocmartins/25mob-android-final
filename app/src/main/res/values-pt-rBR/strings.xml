@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Android Projeto Final</string>
+
+    <!--Login -->
+    <string name="label_login_email">Email</string>
+    <string name="label_login_password">Senha</string>
+    <string name="label_bt_login">Login</string>
+    <string name="label_bt_about">Sobre</string>
+    <string name="label_bt_signup">Cadastrar</string>
+    <string name="invalid_email_message">Email inválido</string>
+    <string name="invalid_password_message">Senha inválida</string>
+    <string name="invalid_credentials_message">Credenciais inválidas</string>
+
+    <!--Cadastro-->
+    <string name="label_register_confirm_password">Senha</string>
+    <string name="label_bt_register">Registrar</string>
+    <string name="invalid_password_length_message">A senha deve ter no mínimo 8 caracteres</string>
+    <string name="invalid_password_confirm_message">Senhas não coincidem</string>
+    <string name="label_bt_backlogin">Voltar</string>
+
+    <!--Fragment de registro do veículo -->
+    <string name="marca_do_ve_culo">Digite a marca do Veículo</string>
+    <string name="modelo_do_ve_culo">Digite o modelo do Veículo</string>
+    <string name="cadastrar_ve_culo">Cadastrar veículo</string>
+    <string name="cars_fragment">Carros</string>
+
+    <!--Registro do veículo -->
+    <string name="car_registered">Veículo inserido com sucesso!</string>
+    <string name="car_error_insert">Erro na inserção do veículo!</string>
+    <string name="register_label">Cadastro de Veículos - Fiap</string>
+    <string name="update">Atualizar</string>
+    <string name="car_update_sucess">Veículo atualizado com sucesso!</string>
+    <string name="apagar_ve_culo">Apagar Veículo</string>
+    <string name="car_delete_sucess">Veículo excluído com sucesso!</string>
+    <string name="car_error_delete">Erro na exclusão do veículo!</string>
+    <string name="car_error_update">Erro na atualização do veículo!</string>
+
+</resources>

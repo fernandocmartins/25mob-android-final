@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cars_navgraph"
+    app:startDestination="@id/carListFragment">
+
+    <fragment
+        android:id="@+id/carsFragment"
+        android:name="br.com.fiap25mob.mbamobile.presentation.cars.CarsFragment"
+        android:label="@string/cars_fragment"
+        tools:layout="@layout/fragment_cars" >
+        <argument
+            android:name="cars"
+            app:argType="br.com.fiap25mob.mbamobile.data.db.CarsEntity"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="br.com.fiap25mob.mbamobile.presentation.carlist.CarListFragment"
+        android:label="@string/register_label"
+        tools:layout="@layout/fragment_car_list" >
+        <action
+            android:id="@+id/action_carListFragment_to_carsFragment"
+            app:destination="@id/carsFragment" />
+    </fragment>
+</navigation>
