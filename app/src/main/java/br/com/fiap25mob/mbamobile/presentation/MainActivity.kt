@@ -1,12 +1,15 @@
-package br.com.fiap25mob.mbamobile
+package br.com.fiap25mob.mbamobile.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fullScreen()
         setContentView(binding.root)
         prepareToolbar()
         changeNavIcon()
@@ -39,5 +43,14 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener{ _, _, _ ->
             supportActionBar?.setHomeAsUpIndicator(R.drawable.back_arrow)
         }
+    }
+
+    private fun fullScreen() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        supportActionBar?.hide()
     }
 }

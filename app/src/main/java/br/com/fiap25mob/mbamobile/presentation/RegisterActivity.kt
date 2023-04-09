@@ -1,4 +1,4 @@
-package br.com.fiap25mob.mbamobile
+package br.com.fiap25mob.mbamobile.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,11 @@ import android.util.Patterns
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
+import android.window.OnBackInvokedDispatcher
+import androidx.activity.OnBackPressedCallback
+import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
-import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -57,8 +59,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btBackLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            openLogin()
         }
     }
 
@@ -67,6 +68,15 @@ class RegisterActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         supportActionBar?.hide()
+    }
+
+    override fun onBackPressed() {
+        openLogin()
+    }
+
+    fun openLogin(){
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
     private fun toast(message: String) {

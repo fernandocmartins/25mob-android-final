@@ -1,83 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/margin_top_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".presentation.LoginActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_login"
+        android:layout_width="@dimen/card_login_width"
+        android:layout_height="@dimen/card_login_height"
+        android:layout_marginStart="@dimen/card_login_margin_start"
+        android:layout_marginTop="@dimen/card_margin_top"
+        android:layout_marginEnd="@dimen/card_margin_end"
+        android:layout_marginBottom="@dimen/card_margin_bottom"
+        app:cardCornerRadius="@dimen/corner"
+        app:cardElevation="@dimen/elevatin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo_car"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_home"
+            android:layout_width="@dimen/logo_w"
+            android:layout_height="@dimen/logo_h"/>
 
     <TextView
         android:id="@+id/tvEmail"
-        android:layout_width="53dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="177dp"
-        android:text="@string/label_login_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/orbitronbold"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_22dp"
+        android:layout_marginStart="@dimen/margin_22dp"
+        android:layout_marginTop="@dimen/margin_50dp"
+        android:text="@string/label_login_email" />
 
     <EditText
         android:id="@+id/inputEmail"
-        android:layout_width="347dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_48"
+        android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/inputPassword"
-        android:layout_width="347dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
     <TextView
         android:id="@+id/tvPassword"
+        android:fontFamily="@font/orbitronbold"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/label_login_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+        android:layout_marginTop="@dimen/card_margin_end"
+        android:text="@string/label_login_password" />
 
-    <Button
+
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_48"
+        android:inputType="textPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btLogin"
-        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:drawableEnd="@drawable/ic_login_arrow"
+        android:paddingEnd="12dp"
+        android:paddingStart="18dp"
+        android:fontFamily="@font/orbitronbold"
+        android:background="@drawable/bg_btn"
+        android:layout_width="@dimen/wid200"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="280dp"
-        android:text="@string/label_bt_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:text="@string/label_bt_login" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btSignup"
-        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/orbitronbold"
+        android:background="@drawable/bg_btn_version"
+        android:layout_width="@dimen/wid200"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginBottom="280dp"
-        android:text="@string/label_bt_signup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btLogin" />
+        android:layout_marginBottom="@dimen/margin_20"
+        android:text="@string/label_bt_signup" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

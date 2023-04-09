@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Android Final Project</string>
+    <string name="app_name">Fiap - Android Final</string>
 
     <!--Login -->
     <string name="label_login_email">Mail</string>
@@ -28,12 +28,15 @@
     <!--Registro do veículo -->
     <string name="car_registered">Successfully registered vehicle!</string>
     <string name="car_error_insert">Error when inserting vehicle!</string>
-    <string name="register_label">Vehicle Registration - FIAP</string>
+    <string name="register_label">CarDastro - Vehicle Registration</string>
     <string name="update">Update</string>
     <string name="car_update_sucess">Vehicle successfully updated!</string>
     <string name="apagar_ve_culo">Delete Vehicle</string>
     <string name="car_delete_sucess">Successfully deleted vehicle!</string>
     <string name="car_error_delete">Error when deleting vehicle!</string>
     <string name="car_error_update">Error when updating vehicle!</string>
+    <string name="delete_confirm">Confirm deletion?</string>
+    <string name="ok_dialog">Ok</string>
+    <string name="cancel_dialog">Cancelar</string>
 
 </resources>

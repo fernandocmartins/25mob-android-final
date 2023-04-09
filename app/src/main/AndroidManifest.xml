@@ -12,16 +12,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.MbaMobile"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
         <activity
-            android:name="br.com.fiap25mob.mbamobile.RegisterActivity"
+            android:name="br.com.fiap25mob.mbamobile.presentation.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name="br.com.fiap25mob.mbamobile.LoginActivity"
+            android:name="br.com.fiap25mob.mbamobile.presentation.LoginActivity"
             android:exported="true"
             android:noHistory="true">
             <intent-filter>
@@ -31,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.fiap25mob.mbamobile.MainActivity"
+            android:name="br.com.fiap25mob.mbamobile.presentation.MainActivity"
             android:exported="true" />
     </application>
 

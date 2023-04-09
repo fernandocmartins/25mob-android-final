@@ -1,9 +1,12 @@
 package br.com.fiap25mob.mbamobile.presentation.cars
 
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -96,6 +99,17 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
         }
     }
 
+    fun dialogConfirmDelete(context: Context) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(getString(R.string.delete_confirm))
+        builder.setPositiveButton(getString(R.string.ok_dialog)) { dialogInterface, i ->
+            viewModel.deleteCar(args.cars?.id ?: 0)
+        }
+            .setNegativeButton(getString(R.string.cancel_dialog)) {
+                    dialog: DialogInterface, which -> dialog.dismiss()}
+        builder.show()
+    }
+
     private fun initListeners() {
         binding.registerCarBtn.setOnClickListener {
             val brand = binding.edtCarBrand.text.toString()
@@ -104,7 +118,7 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
         }
 
         binding.delBtn.setOnClickListener {
-            viewModel.deleteCar(args.cars?.id ?: 0)
+            dialogConfirmDelete(requireContext())
         }
     }
 }

@@ -1,4 +1,4 @@
-package br.com.fiap25mob.mbamobile
+package br.com.fiap25mob.mbamobile.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.util.Patterns
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
+import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
 
