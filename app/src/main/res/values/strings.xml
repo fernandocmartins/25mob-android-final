@@ -37,6 +37,6 @@
     <string name="car_error_update">Error when updating vehicle!</string>
     <string name="delete_confirm">Confirm deletion?</string>
     <string name="ok_dialog">Ok</string>
-    <string name="cancel_dialog">Cancelar</string>
+    <string name="cancel_dialog">Cancel</string>
 
 </resources>

@@ -19,6 +19,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_car_brand"
+            android:fontFamily="@font/orbitronregular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
@@ -37,6 +38,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_car_model"
+            android:fontFamily="@font/orbitronregular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/modelo_do_ve_culo"
@@ -47,8 +49,14 @@
     <Button
         android:id="@+id/register_car_btn"
         android:layout_width="0dp"
+        android:fontFamily="@font/orbitronregular"
+        android:background="@drawable/bg_btn"
+        android:drawableEnd="@drawable/ic_register_car"
+        android:paddingEnd="@dimen/margin12dp"
+        android:paddingStart="@dimen/margin40dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textColor="@color/white"
         android:text="@string/cadastrar_ve_culo"
         app:layout_constraintEnd_toEndOf="@+id/il_car_model"
         app:layout_constraintStart_toStartOf="@+id/il_car_model"
@@ -56,9 +64,13 @@
 
     <Button
         android:id="@+id/del_btn"
+        android:fontFamily="@font/orbitronregular"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
+        android:background="@drawable/bg_btn_version"
+        android:drawableEnd="@drawable/ic_car_delete"
+        android:paddingEnd="@dimen/margin12dp"
+        android:paddingStart="@dimen/margin40dp"
         android:text="@string/apagar_ve_culo"
         android:textColor="@android:color/white"
         android:visibility="gone"

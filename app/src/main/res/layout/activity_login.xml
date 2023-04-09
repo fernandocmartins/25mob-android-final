@@ -75,7 +75,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btLogin"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:drawableEnd="@drawable/ic_login_arrow"

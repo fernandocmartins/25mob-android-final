@@ -15,10 +15,11 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fb_add_car"
+        android:backgroundTint="@color/blue_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@drawable/car_add" />
+        android:src="@drawable/ic_car_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
