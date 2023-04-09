@@ -25,6 +25,7 @@
     <dimen name="margin32dp">32dp</dimen>
     <dimen name="margin12dp">12dp</dimen>
     <dimen name="margin18dp">18dp</dimen>
+    <dimen name="margin40dp">40dp</dimen>
 
 
 </resources>

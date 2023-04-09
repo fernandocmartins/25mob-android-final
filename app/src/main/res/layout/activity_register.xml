@@ -96,7 +96,7 @@
         android:textStyle="bold"
         android:drawableEnd="@drawable/ic_record_register"
         android:paddingEnd="@dimen/margin12dp"
-        android:paddingStart="@dimen/margin18dp"
+        android:paddingStart="@dimen/margin40dp"
         android:layout_marginTop="@dimen/margin_20"
         android:fontFamily="@font/orbitronbold"
         android:background="@drawable/bg_btn"

@@ -5,7 +5,7 @@
     <!--Login -->
     <string name="label_login_email">Email</string>
     <string name="label_login_password">Senha</string>
-    <string name="label_bt_login">Login</string>
+    <string name="label_bt_login">Acessar</string>
     <string name="label_bt_about">Sobre</string>
     <string name="label_bt_signup">Cadastrar</string>
     <string name="invalid_email_message">Email inválido</string>
