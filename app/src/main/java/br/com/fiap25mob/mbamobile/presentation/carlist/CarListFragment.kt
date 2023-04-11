@@ -6,43 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import br.com.fiap25mob.mbamobile.R
-import br.com.fiap25mob.mbamobile.data.dao.CarsDAO
-import br.com.fiap25mob.mbamobile.data.db.CarsDB
 import br.com.fiap25mob.mbamobile.databinding.FragmentCarListBinding
 import br.com.fiap25mob.mbamobile.presentation.carlist.adapter.CarListAdapter
-import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSourceImpl
-import br.com.fiap25mob.mbamobile.repository.CarsRepository
-import br.com.fiap25mob.mbamobile.repository.CarsRepositoryImpl
-import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSource
-import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSource
-import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSourceImpl
-import br.com.fiap25mob.mbamobile.utils.FirebaseUtils
 import br.com.fiap25mob.mbamobile.utils.navigateWithAnimations
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CarListFragment : Fragment(R.layout.fragment_car_list) {
 
     private var _binding: FragmentCarListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CarListViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val remoteDataSource: CarsRemoteDataSource = CarsRemoteDataSourceImpl(FirebaseUtils())
-                val carDAO: CarsDAO = CarsDB.getInstance(requireContext()).carsDAO
-                val localDataSource: CarsLocalDataSource = CarsLocalDataSourceImpl(carDAO)
-                val repository: CarsRepository = CarsRepositoryImpl(
-                    remoteDataSource = remoteDataSource,
-                    localDataSource = localDataSource
-                )
-                return CarListViewModel(repository) as T
-            }
-        }
-    }
+    private val viewModel: CarListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

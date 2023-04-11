@@ -9,44 +9,20 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.fiap25mob.mbamobile.R
-import br.com.fiap25mob.mbamobile.data.dao.CarsDAO
-import br.com.fiap25mob.mbamobile.data.db.CarsDB
 import br.com.fiap25mob.mbamobile.databinding.FragmentCarsBinding
-import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSourceImpl
-import br.com.fiap25mob.mbamobile.repository.CarsRepository
-import br.com.fiap25mob.mbamobile.repository.CarsRepositoryImpl
-import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSource
-import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSource
-import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSourceImpl
-import br.com.fiap25mob.mbamobile.utils.FirebaseUtils
 import br.com.fiap25mob.mbamobile.utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CarsFragment : Fragment(R.layout.fragment_cars) {
 
     private var _binding: FragmentCarsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CarsViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val remoteDataSource: CarsRemoteDataSource = CarsRemoteDataSourceImpl(FirebaseUtils())
-                val carDAO: CarsDAO = CarsDB.getInstance(requireContext()).carsDAO
-                val localDataSource: CarsLocalDataSource = CarsLocalDataSourceImpl(carDAO)
-                val repository: CarsRepository = CarsRepositoryImpl(
-                    remoteDataSource = remoteDataSource,
-                    localDataSource = localDataSource
-                )
-                return CarsViewModel(repository) as T
-            }
-        }
-    }
+    private val viewModel: CarsViewModel by viewModel()
 
     private val args: CarsFragmentArgs by navArgs()
 
