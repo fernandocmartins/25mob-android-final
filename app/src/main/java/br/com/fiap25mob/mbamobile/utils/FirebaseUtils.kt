@@ -1,6 +1,5 @@
 package br.com.fiap25mob.mbamobile.utils
 
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
 import br.com.fiap25mob.mbamobile.data.db.CarsEntity
@@ -9,6 +8,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.ktx.database
+
+private const val TAG = "FirebaseUtils"
 
 class FirebaseUtils {
 
