@@ -48,4 +48,23 @@ class FirebaseUtils {
         })
         return list
     }
+
+    fun deleteAllValues() {
+        val database = Firebase.database
+        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
+
+        myRef!!.child(CAR_PATH).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (child in snapshot.children) {
+                    child.ref.removeValue()
+                }
+                Log.d(TAG, "Deleted all elements on cloud")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to delete elements.", error.toException())
+            }
+        })
+    }
 }
