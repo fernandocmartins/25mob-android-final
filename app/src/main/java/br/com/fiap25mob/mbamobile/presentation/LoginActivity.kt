@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
     private fun verifyUserLogged() {
         val currentUser = Firebase.auth.currentUser
         if (currentUser != null) {
-            Log.d(TAG, "User already logged")
+            Log.d(TAG, "User already logged - ${currentUser.email}")
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
