@@ -6,17 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.fiap25mob.mbamobile.data.db.CarsEntity
 import br.com.fiap25mob.mbamobile.repository.CarsRepository
-import br.com.fiap25mob.mbamobile.utils.FirebaseUtils
 import kotlinx.coroutines.launch
 
 class CarListViewModel(private val repository: CarsRepository) : ViewModel() {
 
     private val _allCarsEvent = MutableLiveData<List<CarsEntity>>()
     val allCarsEvent: LiveData<List<CarsEntity>>get() = _allCarsEvent
-    private var firebaseConnection: FirebaseUtils = FirebaseUtils()
 
     fun getCars() = viewModelScope.launch {
         _allCarsEvent.postValue(repository.getAllCars())
-        firebaseConnection.readValues()
     }
 }

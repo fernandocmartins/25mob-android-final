@@ -35,7 +35,7 @@ class CarsViewModel(private val repository: CarsRepository) : ViewModel() {
             repository.updateCar(id, brand, model)
             _carStateEventData.value = CarState.Updated
             _messageEventData.value = R.string.car_update_sucess
-        }catch (ex: Exception) {
+        } catch (ex: Exception) {
             _messageEventData.value = R.string.car_error_update
             Log.e(TAG, ex.toString())
         }
