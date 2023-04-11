@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.com.fiap25mob.mbamobile.R
@@ -47,6 +48,8 @@ class CarListFragment : Fragment(R.layout.fragment_car_list) {
 
     private fun observeViewModelEvents() {
         viewModel.allCarsEvent.observe(viewLifecycleOwner){ carList ->
+            binding.emptyListCarMessage.isVisible = carList.isEmpty()
+            binding.rvCars.isVisible = carList.isNotEmpty()
             val carListAdapter = CarListAdapter(carList).apply {
                 onItemClick = { cars ->
                     val directions = CarListFragmentDirections
