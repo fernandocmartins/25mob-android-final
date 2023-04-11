@@ -11,11 +11,11 @@ import com.google.firebase.database.ktx.database
 
 private const val TAG = "FirebaseUtils"
 
-class FirebaseUtils {
+class FirebaseUtils(private val context: Context) {
 
     fun saveValue(id: Long, brand: String, model: String) {
         val database = Firebase.database
-        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val pref = context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
         val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
         myRef!!.child(CAR_PATH).child(id.toString()).setValue(CarsEntity(id, brand, model))
@@ -23,7 +23,7 @@ class FirebaseUtils {
 
     fun deleteValue(id: Long) {
         val database = Firebase.database
-        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val pref = context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
         val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
         myRef!!.child(CAR_PATH).child(id.toString()).removeValue()
@@ -32,7 +32,7 @@ class FirebaseUtils {
     fun readValues() : List<CarsEntity> {
         val list = mutableListOf<CarsEntity>()
         val database = Firebase.database
-        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val pref = context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
         val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
         myRef!!.child(CAR_PATH).addListenerForSingleValueEvent(object : ValueEventListener {
@@ -52,7 +52,7 @@ class FirebaseUtils {
 
     fun deleteAllValues() {
         val database = Firebase.database
-        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val pref = context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
         val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
         myRef!!.child(CAR_PATH).addListenerForSingleValueEvent(object : ValueEventListener {
