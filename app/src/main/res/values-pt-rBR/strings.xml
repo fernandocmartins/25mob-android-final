@@ -39,6 +39,9 @@
     <string name="ok_dialog">Ok</string>
     <string name="cancel_dialog">Cancelar</string>
 
+    <!-- Tela inicial -->
+    <string name="empty_list_car_message">Ops, você não possui nenhum carro a sua lista</string>
+
 
 
 </resources>

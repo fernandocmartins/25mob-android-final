@@ -22,4 +22,16 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_car_add" />
 
+    <TextView
+        android:id="@+id/empty_list_car_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/empty_list_car_message"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="gone"
+        tools:text="Ops, você não possui nenhum carro a sua lista"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
