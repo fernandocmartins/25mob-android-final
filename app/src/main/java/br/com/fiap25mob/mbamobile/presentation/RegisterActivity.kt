@@ -7,8 +7,6 @@ import android.util.Patterns
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
-import android.window.OnBackInvokedDispatcher
-import androidx.activity.OnBackPressedCallback
 import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
