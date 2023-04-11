@@ -63,6 +63,9 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    // Koin (DI)
+    implementation "io.insert-koin:koin-android:$koin_version"
+
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
