@@ -7,12 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.repository.CarsRepository
-import br.com.fiap25mob.mbamobile.utils.FirebaseUtils
 import kotlinx.coroutines.launch
 
 class CarsViewModel(private val repository: CarsRepository) : ViewModel() {
-
-    private var firebaseConnection: FirebaseUtils = FirebaseUtils()
 
     private val _carStateEventData = MutableLiveData<CarState>()
     val carStateEventData: LiveData<CarState>get() =_carStateEventData
@@ -26,8 +23,6 @@ class CarsViewModel(private val repository: CarsRepository) : ViewModel() {
             if (id > 0){
                 _carStateEventData.value = CarState.Included
                 _messageEventData.value = R.string.car_registered
-
-                firebaseConnection.saveValue(id, brand, model)
             }
         } catch (ex: Exception){
             _messageEventData.value = R.string.car_error_insert
@@ -40,8 +35,6 @@ class CarsViewModel(private val repository: CarsRepository) : ViewModel() {
             repository.updateCar(id, brand, model)
             _carStateEventData.value = CarState.Updated
             _messageEventData.value = R.string.car_update_sucess
-
-            firebaseConnection.saveValue(id, brand, model)
         }catch (ex: Exception) {
             _messageEventData.value = R.string.car_error_update
             Log.e(TAG, ex.toString())
@@ -62,8 +55,6 @@ class CarsViewModel(private val repository: CarsRepository) : ViewModel() {
                 repository.deleteCar(id)
                 _carStateEventData.value = CarState.Deleted
                 _messageEventData.value = R.string.car_delete_sucess
-
-                firebaseConnection.deleteValue(id)
             }
         } catch (ex: Exception) {
             _messageEventData.value = R.string.car_error_delete

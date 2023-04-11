@@ -15,8 +15,13 @@ import br.com.fiap25mob.mbamobile.data.dao.CarsDAO
 import br.com.fiap25mob.mbamobile.data.db.CarsDB
 import br.com.fiap25mob.mbamobile.databinding.FragmentCarListBinding
 import br.com.fiap25mob.mbamobile.presentation.carlist.adapter.CarListAdapter
-import br.com.fiap25mob.mbamobile.repository.CarsDatabaseDataSource
+import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSourceImpl
 import br.com.fiap25mob.mbamobile.repository.CarsRepository
+import br.com.fiap25mob.mbamobile.repository.CarsRepositoryImpl
+import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSource
+import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSource
+import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSourceImpl
+import br.com.fiap25mob.mbamobile.utils.FirebaseUtils
 import br.com.fiap25mob.mbamobile.utils.navigateWithAnimations
 
 class CarListFragment : Fragment(R.layout.fragment_car_list) {
@@ -27,8 +32,13 @@ class CarListFragment : Fragment(R.layout.fragment_car_list) {
     private val viewModel: CarListViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val remoteDataSource: CarsRemoteDataSource = CarsRemoteDataSourceImpl(FirebaseUtils())
                 val carDAO: CarsDAO = CarsDB.getInstance(requireContext()).carsDAO
-                val repository: CarsRepository = CarsDatabaseDataSource(carDAO)
+                val localDataSource: CarsLocalDataSource = CarsLocalDataSourceImpl(carDAO)
+                val repository: CarsRepository = CarsRepositoryImpl(
+                    remoteDataSource = remoteDataSource,
+                    localDataSource = localDataSource
+                )
                 return CarListViewModel(repository) as T
             }
         }
@@ -38,7 +48,7 @@ class CarListFragment : Fragment(R.layout.fragment_car_list) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCarListBinding.inflate(inflater, container, false)
         return binding.root
     }

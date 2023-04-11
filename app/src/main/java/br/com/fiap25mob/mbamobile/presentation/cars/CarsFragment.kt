@@ -18,8 +18,13 @@ import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.data.dao.CarsDAO
 import br.com.fiap25mob.mbamobile.data.db.CarsDB
 import br.com.fiap25mob.mbamobile.databinding.FragmentCarsBinding
-import br.com.fiap25mob.mbamobile.repository.CarsDatabaseDataSource
+import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSourceImpl
 import br.com.fiap25mob.mbamobile.repository.CarsRepository
+import br.com.fiap25mob.mbamobile.repository.CarsRepositoryImpl
+import br.com.fiap25mob.mbamobile.repository.local.CarsLocalDataSource
+import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSource
+import br.com.fiap25mob.mbamobile.repository.remote.CarsRemoteDataSourceImpl
+import br.com.fiap25mob.mbamobile.utils.FirebaseUtils
 import br.com.fiap25mob.mbamobile.utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 
@@ -31,8 +36,13 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
     private val viewModel: CarsViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val remoteDataSource: CarsRemoteDataSource = CarsRemoteDataSourceImpl(FirebaseUtils())
                 val carDAO: CarsDAO = CarsDB.getInstance(requireContext()).carsDAO
-                val repository: CarsRepository = CarsDatabaseDataSource(carDAO)
+                val localDataSource: CarsLocalDataSource = CarsLocalDataSourceImpl(carDAO)
+                val repository: CarsRepository = CarsRepositoryImpl(
+                    remoteDataSource = remoteDataSource,
+                    localDataSource = localDataSource
+                )
                 return CarsViewModel(repository) as T
             }
         }
