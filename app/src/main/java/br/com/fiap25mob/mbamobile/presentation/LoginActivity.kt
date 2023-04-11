@@ -10,6 +10,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.databinding.ActivityLoginBinding
+import br.com.fiap25mob.mbamobile.utils.USER_ID_KEY
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -39,9 +40,9 @@ class LoginActivity : AppCompatActivity() {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
                     val userUID = it.result.user?.uid
-                    val userIdSP = getSharedPreferences("USERID", Context.MODE_PRIVATE)
+                    val userIdSP = getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
 
-                    userIdSP.edit().putString("USERID", userUID).apply()
+                    userIdSP.edit().putString(USER_ID_KEY, userUID).apply()
 
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
@@ -57,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun fullScreen() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN

@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 
 class CarsViewModel(private val repository: CarsRepository) : ViewModel() {
 
-    private val _carStateEventData = MutableLiveData<CarState>()
     private var firebaseConnection: FirebaseUtils = FirebaseUtils()
 
+    private val _carStateEventData = MutableLiveData<CarState>()
     val carStateEventData: LiveData<CarState>get() =_carStateEventData
 
     private val _messageEventData = MutableLiveData<Int>()

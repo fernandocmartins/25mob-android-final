@@ -8,34 +8,33 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.database.ktx.database;
+import com.google.firebase.database.ktx.database
 
 class FirebaseUtils {
 
     fun saveValue(id: Long, brand: String, model: String) {
+        val database = Firebase.database
+        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
-        val database = Firebase.database;
-        val pref = App.context.getSharedPreferences("USERID", Context.MODE_PRIVATE)
-        val myRef = pref.getString("USERID", "")?.let { database.getReference(it) }
-
-        myRef!!.child("car").child(id.toString()).setValue(CarsEntity(id, brand, model))
+        myRef!!.child(CAR_PATH).child(id.toString()).setValue(CarsEntity(id, brand, model))
     }
 
     fun deleteValue(id: Long) {
         val database = Firebase.database
-        val pref = App.context.getSharedPreferences("USERID", Context.MODE_PRIVATE)
-        val myRef = pref.getString("USERID", "")?.let { database.getReference(it) }
+        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
-        myRef!!.child("car").child(id.toString()).removeValue()
+        myRef!!.child(CAR_PATH).child(id.toString()).removeValue()
     }
 
     fun readValues() : List<CarsEntity> {
         val list = mutableListOf<CarsEntity>()
-        val database = Firebase.database;
-        val pref = App.context.getSharedPreferences("USERID", Context.MODE_PRIVATE)
-        val myRef = pref.getString("USERID", "")?.let { database.getReference(it) }
+        val database = Firebase.database
+        val pref = App.context.getSharedPreferences(USER_ID_KEY, Context.MODE_PRIVATE)
+        val myRef = pref.getString(USER_ID_KEY, "")?.let { database.getReference(it) }
 
-        myRef!!.child("car").addListenerForSingleValueEvent(object : ValueEventListener {
+        myRef!!.child(CAR_PATH).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (child in snapshot.children) {
                     child.getValue(CarsEntity::class.java)?.let { list.add(it) }

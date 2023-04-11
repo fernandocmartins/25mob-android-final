@@ -99,14 +99,16 @@ class CarsFragment : Fragment(R.layout.fragment_cars) {
         }
     }
 
-    fun dialogConfirmDelete(context: Context) {
+    private fun dialogConfirmDelete(context: Context) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(getString(R.string.delete_confirm))
-        builder.setPositiveButton(getString(R.string.ok_dialog)) { dialogInterface, i ->
+        builder
+            .setPositiveButton(getString(R.string.ok_dialog)) { dialogInterface, i ->
             viewModel.deleteCar(args.cars?.id ?: 0)
-        }
+            }
             .setNegativeButton(getString(R.string.cancel_dialog)) {
-                    dialog: DialogInterface, which -> dialog.dismiss()}
+                    dialog: DialogInterface, which -> dialog.dismiss()
+            }
         builder.show()
     }
 

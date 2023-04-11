@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun prepareToolbar(){
+    private fun prepareToolbar(){
         setSupportActionBar(binding.carsToolbar)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -39,14 +39,14 @@ class MainActivity : AppCompatActivity() {
          return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    fun changeNavIcon(){
+    private fun changeNavIcon(){
         navController.addOnDestinationChangedListener{ _, _, _ ->
             supportActionBar?.setHomeAsUpIndicator(R.drawable.back_arrow)
         }
     }
 
     private fun fullScreen() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
