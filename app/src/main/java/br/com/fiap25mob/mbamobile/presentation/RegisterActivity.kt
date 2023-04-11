@@ -72,7 +72,7 @@ class RegisterActivity : AppCompatActivity() {
         openLogin()
     }
 
-    fun openLogin(){
+    private fun openLogin(){
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
