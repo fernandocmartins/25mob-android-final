@@ -1,5 +1,6 @@
 package br.com.fiap25mob.mbamobile.presentation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
@@ -11,6 +12,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import br.com.fiap25mob.mbamobile.R
 import br.com.fiap25mob.mbamobile.databinding.ActivityMainBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,5 +55,11 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         supportActionBar?.hide()
+    }
+
+    override fun onBackPressed() {
+        Firebase.auth.signOut()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }
