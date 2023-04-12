@@ -20,7 +20,7 @@ class CarsRepositoryImpl(
     }
 
     override suspend fun getAllCars(): List<CarsEntity> {
-        return remoteDataSource.getAllCars().ifEmpty { localDataSource.getAllCars() }
+        return localDataSource.getAllCars()
     }
 
     override suspend fun deleteCar(id: Long) {
